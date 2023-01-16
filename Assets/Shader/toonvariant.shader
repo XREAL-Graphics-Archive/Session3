@@ -1,4 +1,4 @@
-Shader "toonvariant" 
+Shader "ToonVariant" 
 {
     Properties {
         _Ambientcolor("Ambient color",color)=(0,0,0,0)
