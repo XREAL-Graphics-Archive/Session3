@@ -1,25 +1,32 @@
 Shader "session3/ToonRamp" 
 {
-
-Properties 
-    
+    Properties 
     {
         _MainTex("Main Texture", 2D) = "white" {}
         _RampTex("Ramp Texture", 2D) = "white" {}
     }
-
-
-SubShader 
+    
+    SubShader 
     {
-        Tags {"RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry"} 
-        Pass{
+        Tags
+        {
+            "RenderPipeline"="UniversalPipeline"
+            "RenderType"="Opaque"
+            "Queue"="Geometry"
+        } 
+        
+        Pass
+        {
             Name "Universal Forward"
             Tags {"LightMode" = "UniversalForward"}
+            
             HLSLPROGRAM
+
             #pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
             #pragma vertex vert
             #pragma fragment frag
+            
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             struct VertexInput
@@ -36,8 +43,6 @@ SubShader
                 float2 uv : TEXCOORD0;
             };
 
-
-
             float4 _MainTex_ST;
             Texture2D _MainTex;
             SamplerState sampler_MainTex;
@@ -45,8 +50,7 @@ SubShader
             float4 _RampTex_ST;
             Texture2D  _RampTex;
             SamplerState sampler__RampTex;
-
-
+            
             VertexOutput vert(VertexInput v)
             {
                 VertexOutput o;
@@ -69,12 +73,9 @@ SubShader
                 color.rgb = color.rgb * ramp + ambient;
 
                 return color;
-
             } 
             
             ENDHLSL
-        } 
-    
+        }
     }
-
 }

@@ -1,14 +1,13 @@
 Shader "session3/ToonLight" 
 {
-
-Properties 
+    Properties 
     {
-    _AmbientColor("Ambient color",color)=(0,0,0,0)
-    _LightWidth("Light Width",Range(0,255))=1
-    _LightStep("Light Step",Range(0,20))=10
+        _AmbientColor("Ambient color",color)=(0,0,0,0)
+        _LightWidth("Light Width",Range(0,255))=1
+        _LightStep("Light Step",Range(0,20))=10
     }
 
-SubShader 
+    SubShader 
     {
         Tags {"RenderPipeline"="UniversalPipeline" "RenderType"="Opaque" "Queue"="Geometry"} 
         Pass
@@ -37,7 +36,7 @@ SubShader
             };
 
             float4 _AmbientColor;
-            float  _LightWidth;
+            float _LightWidth;
             float _LightStep;
 
             VertexOutput vert(VertexInput v)
@@ -62,6 +61,6 @@ SubShader
             } 
             
             ENDHLSL
-            } 
-        }
+        } 
     }
+}

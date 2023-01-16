@@ -1,4 +1,4 @@
-Shader "ToonVariant" 
+Shader "session3/ToonVariant" 
 {
     Properties
     {
