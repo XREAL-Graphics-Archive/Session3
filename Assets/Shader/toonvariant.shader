@@ -1,15 +1,16 @@
 Shader "ToonVariant" 
 {
-    Properties {
-        _Ambientcolor("Ambient color",color)=(0,0,0,0)
-        _LightWidth("Light Width",Range(0,255))=1
+    Properties
+    {
+        _BaseColor("Base Color", Color) = (1,1,1,1)
+        _AmbientColor("Ambient Color", Color) = (0,0,0,0)
+        
         [IntRange] _LightStep("Light Step", Range(2,10)) = 2
+        _LightWidth("Light Width",Range(0,255))=1
         
         _StepOffset("Step Offset", Range(-1,1)) = 0
         _StepWidth("Step Width", Range(0,1)) = 0.5
     }
-
-
     SubShader 
     {
         Tags 
@@ -20,10 +21,10 @@ Shader "ToonVariant"
         Pass
         {
             Name "Universal Forward"
-
             Tags {"LightMode" = "UniversalForward"}
 
             HLSLPROGRAM
+            
             #pragma prefer_hlslcc gles
             #pragma exclude_renderers d3d11_9x
             #pragma vertex vert
@@ -42,8 +43,9 @@ Shader "ToonVariant"
                 float4 vertex : SV_POSITION; 
                 float3 normal : NORMAL;
             };
-            
-            float4 _Ambientcolor;
+
+            half4 _BaseColor;
+            half4 _AmbientColor;
             float _LightWidth;
             float _LightStep;
             float _StepOffset;
@@ -56,18 +58,19 @@ Shader "ToonVariant"
                 o.normal = TransformObjectToWorldNormal(v.normal);
                 return o; 
             }
-
-
+            
             half4 frag(VertexOutput i) : SV_Target 
             {
-                Light mainLight = GetMainLight();
+                Light mainLight = GetMainLight(); // main light of scene (directional)
+                
                 half NdotL = dot(i.normal, mainLight.direction);
+                NdotL = saturate(NdotL * (1 - _StepWidth) + _StepOffset); // remap normal calculations
 
                 // https://learn.microsoft.com/en-us/windows/win32/direct3d9/casting-and-conversion
-                NdotL = saturate(NdotL * (1 - _StepWidth) + _StepOffset);
                 NdotL = int(NdotL * _LightStep) / _LightStep;
-                
-                half4 color =  half4(NdotL * _MainLightColor.rgb, 1) + (1 - NdotL) * _Ambientcolor;
+
+                // combine to final color
+                half4 color =  half4(NdotL * _MainLightColor.rgb * _BaseColor.rgb, 1) + (1 - NdotL) * _AmbientColor;
 
                 return color;
             } 
