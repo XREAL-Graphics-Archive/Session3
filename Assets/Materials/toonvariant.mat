@@ -22,10 +22,10 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _StepCount: 3
-    - _StepOffset: 0.636
-    - _StepWidth: 0.449
+    - _StepCount: 6
+    - _StepOffset: 0.36
+    - _StepWidth: 0.443
     m_Colors:
-    - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _AmbientColor: {r: 0.14934385, g: 0, b: 0.9716981, a: 0}
+    - _BaseColor: {r: 1, g: 0, b: 0.12676048, a: 1}
   m_BuildTextureStacks: []

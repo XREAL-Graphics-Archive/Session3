@@ -63,8 +63,11 @@ Shader "session3/RimLight"
 				half face = saturate(dot(i.WorldSpaceViewDirection, i.normal));
 				half3 rim = 1.0 - (pow(face, _RimPower));
 
-				color.rgb *= saturate(dot(i.normal, light)) * _MainLightColor.rgb + ambient ;	
+				half4 color2 = half4(0,1,0,1); // center color
+				
+				color.rgb *= saturate(dot(i.normal, light)) * _MainLightColor.rgb + ambient;	
 				color.rgb += rim * _RimInten * _RimColor;
+				color.rgb = lerp(color, color2, face); // fade green to blue
 				return color;
 			}
 			
@@ -72,3 +75,7 @@ Shader "session3/RimLight"
 		}
 	}
 }
+
+
+// a + w*(b-a);
+// (1-w) * a + w * b;

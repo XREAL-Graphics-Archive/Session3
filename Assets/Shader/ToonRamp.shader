@@ -68,6 +68,8 @@ Shader "session3/ToonRamp"
                 float halfNdotL = NdotL * 0.5 + 0.5; //NdotL(내적) 범위(-1~1)를 (0~1)로 변경.
 
                 float4 color = _MainTex.Sample(sampler_MainTex, i.uv);
+                //float4 color = _MainTex.Sample(sampler_MainTex, float2(0.1,0.1));
+                
                 float3 ambient = SampleSH(i.normal);
                 float3 ramp = _RampTex.Sample(sampler_MainTex, float2(halfNdotL, 0));
                 color.rgb = color.rgb * ramp + ambient;
