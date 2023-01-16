@@ -61,7 +61,7 @@ SubShader
             {
                 float3 Light = _MainLightPosition.xyz;
                 float NdotL = dot(Light, i.normal);
-                float halfNdotL = NdotL * 0.5 + 0.5;
+                float halfNdotL = NdotL * 0.5 + 0.5; //NdotL(내적) 범위(-1~1)를 (0~1)로 변경.
 
                 float4 color = _MainTex.Sample(sampler_MainTex, i.uv);
                 float3 ambient = SampleSH(i.normal);
