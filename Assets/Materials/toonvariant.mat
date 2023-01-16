@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: toonvariant
+  m_Name: ToonVariant
   m_Shader: {fileID: 4800000, guid: f2d4218d18a5e154d9af6972cce60799, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -22,12 +22,10 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _LightStep: 2
-    - _LightWidth: 1
-    - _StepOffset: 0.599
-    - _StepWidth: 0.142
+    - _StepCount: 3
+    - _StepOffset: 0.636
+    - _StepWidth: 0.449
     m_Colors:
     - _AmbientColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Ambientcolor: {r: 0.18016532, g: 0.05900677, b: 0.3207547, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

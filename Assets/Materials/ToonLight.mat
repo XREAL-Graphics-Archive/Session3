@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: toonshader1mat
+  m_Name: ToonLight
   m_Shader: {fileID: 4800000, guid: 4dae8ea94524c4c3ca25cbba4f3281ed, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

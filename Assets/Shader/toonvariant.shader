@@ -5,9 +5,7 @@ Shader "ToonVariant"
         _BaseColor("Base Color", Color) = (1,1,1,1)
         _AmbientColor("Ambient Color", Color) = (0,0,0,0)
         
-        [IntRange] _LightStep("Light Step", Range(2,10)) = 2
-        _LightWidth("Light Width",Range(0,255))=1
-        
+        [IntRange] _StepCount("Step Count", Range(2,10)) = 2
         _StepOffset("Step Offset", Range(-1,1)) = 0
         _StepWidth("Step Width", Range(0,1)) = 0.5
     }
@@ -46,8 +44,7 @@ Shader "ToonVariant"
 
             half4 _BaseColor;
             half4 _AmbientColor;
-            float _LightWidth;
-            float _LightStep;
+            float _StepCount;
             float _StepOffset;
             float _StepWidth;
 
@@ -67,7 +64,7 @@ Shader "ToonVariant"
                 NdotL = saturate(NdotL * (1 - _StepWidth) + _StepOffset); // remap normal calculations
 
                 // https://learn.microsoft.com/en-us/windows/win32/direct3d9/casting-and-conversion
-                NdotL = int(NdotL * _LightStep) / _LightStep;
+                NdotL = int(NdotL * _StepCount) / _StepCount;
 
                 // combine to final color
                 half4 color =  half4(NdotL * _MainLightColor.rgb * _BaseColor.rgb, 1) + (1 - NdotL) * _AmbientColor;
