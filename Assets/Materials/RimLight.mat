@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: toonshader3 mat
+  m_Name: RimLight
   m_Shader: {fileID: 4800000, guid: 0384579d3d6214694bdf9d6c029fa37e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
